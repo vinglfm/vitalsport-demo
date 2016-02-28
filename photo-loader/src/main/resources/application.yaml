@@ -1,0 +1,3 @@
+server:
+  contextPath: /vitalsport/demo/image
+  port: 8085
