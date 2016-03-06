@@ -1,0 +1,4 @@
+1) user click on update button;
+2) controller send infos to service;
+3) service make requests to server for all info inside infos;
+4) on callback add to thumbnail, call $apply ?

@@ -45,8 +45,6 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <!-- Serves *only* to filter the wro.xml so it can get an absolute
-                            path for the project -->
                         <id>copy-resources</id>
                         <phase>validate</phase>
                         <goals>
