@@ -1,8 +1,16 @@
-'use strict';
+"use strict";
 
-angular.module('demo')
-    .constant('baseUrl', 'http://localhost:8081/vitalsport/photos/')
-    .service('imageService', ['$http', 'baseUrl', function($http, baseUrl) {
+angular.module("demo")
+    .constant("baseUrl", "http://localhost:8081/vitalsport/photos/")
+    .service("loginService", function(){
+        this.userId = "";
+    })
+    .service("albumService", ["$http", "baseUrl", function($http, baseUrl) {
+        this.download = function(userId) {
+            return $http.get(baseUrl + userId + "/albums");
+        };
+    }])
+    .service("imageService", ["$http", "baseUrl", function($http, baseUrl) {
         this.download = function(infos, callback, error) {
 
             infos.forEach(function(info){
@@ -16,7 +24,7 @@ angular.module('demo')
             });
         }
     }])
-    .service('infoSharingService', function() {
+    .service("infoSharingService", function() {
         this.infos = [];
 
         this.append = function(userId, album, image) {

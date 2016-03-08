@@ -11,256 +11,62 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-<div class="container">
-    <div id="api" class="panel-group col-sm-6"
-         ng-controller="ImageController as imageCtrl">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#uploadImage">
-                        Upload Image
-                    </a>
-                </h4>
-            </div>
-            <div id="uploadImage" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="uploadForm"
-                          ng-submit="imageCtrl.upload()" novalidate>
+<div class="container fill">
+    <!--<div id="api" class="panel-group col-sm-6"-->
+    <!--ng-controller="ImageController as imageCtrl">-->
+    <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading">-->
+    <!--<h4 class="panel-title">-->
+    <!--<a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#uploadImage">-->
+    <!--Upload Image-->
+    <!--</a>-->
+    <!--</h4>-->
+    <!--</div>-->
+    <!--<div id="uploadImage" class="panel-collapse collapse">-->
+    <!--<div class="panel-body">-->
+    <!--<form class="form-horizontal" name="uploadForm"-->
+    <!--ng-submit="imageCtrl.upload()" novalidate>-->
 
-                        <div class="input-group">
-                            <label for="upload.userId" class="input-group-addon">User id: </label>
-                            <input id="upload.userId" class="form-control" ng-model="imageCtrl.userId" type="text"
-                                   required>
-                        </div>
+    <!--<div class="input-group">-->
+    <!--<label for="upload.userId" class="input-group-addon">User id: </label>-->
+    <!--<input id="upload.userId" class="form-control" ng-model="imageCtrl.userId" type="text"-->
+    <!--required>-->
+    <!--</div>-->
 
-                        <div class="input-group">
-                            <label for="upload.album" class="input-group-addon">Album: </label>
-                            <input id="upload.album" class="form-control" ng-model="imageCtrl.album" type="text"
-                                   required>
-                        </div>
+    <!--<div class="input-group">-->
+    <!--<label for="upload.album" class="input-group-addon">Album: </label>-->
+    <!--<input id="upload.album" class="form-control" ng-model="imageCtrl.album" type="text"-->
+    <!--required>-->
+    <!--</div>-->
 
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-primary btn-file">
-                                    <input id="upload.imageSelector" file-input="files" accept="image/*"
-                                           type="file" required>Select
-                                </span>
-                            </span>
-                            <input id="upload.fileName" type="text" class="form-control" readonly>
-                        </div>
+    <!--<div class="input-group">-->
+    <!--<span class="input-group-btn">-->
+    <!--<span class="btn btn-primary btn-file">-->
+    <!--<input id="upload.imageSelector" file-input="files" accept="image/*"-->
+    <!--type="file" required>Select-->
+    <!--</span>-->
+    <!--</span>-->
+    <!--<input id="upload.fileName" type="text" class="form-control" readonly>-->
+    <!--</div>-->
 
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
+    <!--<button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>-->
 
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#downloadImage">
-                        Download Image
-                    </a>
-                </h4>
-            </div>
-            <div id="downloadImage" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="downloadForm"
-                          ng-submit="imageCtrl.submit()" novalidate>
-
-                        <div class="input-group">
-                            <label for="download.userId" class="input-group-addon">User id: </label>
-                            <input id="download.userId" class="form-control" ng-model="imageCtrl.userId" type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="download.album" class="input-group-addon">Album: </label>
-                            <input id="download.album" class="form-control" ng-model="imageCtrl.album" type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="download.image" class="input-group-addon">Image: </label>
-                            <input id="download.image" class="form-control" ng-model="imageCtrl.image" type="text"
-                                   required>
-                        </div>
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#deleteImage">
-                        Delete Image
-                    </a>
-                </h4>
-            </div>
-            <div id="deleteImage" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="deleteImageForm"
-                          ng-submit="imageCtrl.submit()" novalidate>
-
-                        <div class="input-group">
-                            <label for="delete.image.userId" class="input-group-addon">User id: </label>
-                            <input id="delete.image.userId" class="form-control" ng-model="imageCtrl.userId" type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="delete.image.album" class="input-group-addon">Album: </label>
-                            <input id="delete.image.album" class="form-control" ng-model="imageCtrl.album" type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="delete.image.name" class="input-group-addon">Image: </label>
-                            <input id="delete.image.name" class="form-control" ng-model="imageCtrl.image" type="text"
-                                   required>
-                        </div>
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#createAlbum">
-                        Create Album
-                    </a>
-                </h4>
-            </div>
-            <div id="createAlbum" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="createAlbumForm"
-                          ng-submit="imageCtrl.submit()" novalidate>
-
-                        <div class="input-group">
-                            <label for="create.album.userId" class="input-group-addon">User id: </label>
-                            <input id="create.album.userId" class="form-control" ng-model="imageCtrl.userId" type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="create.album.name" class="input-group-addon">Album: </label>
-                            <input id="create.album.name" class="form-control" ng-model="imageCtrl.album" type="text"
-                                   required>
-                        </div>
-
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#getAlbum">
-                        Get Album
-                    </a>
-                </h4>
-            </div>
-            <div id="getAlbum" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="createAlbumForm"
-                          ng-submit="imageCtrl.submit()" novalidate>
-
-                        <div class="input-group">
-                            <label for="get.album.userId" class="input-group-addon">User id: </label>
-                            <input id="get.album.userId" class="form-control" ng-model="imageCtrl.userId" type="text"
-                                   required>
-                        </div>
-
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#deleteAlbum">
-                        Delete Album
-                    </a>
-                </h4>
-            </div>
-            <div id="deleteAlbum" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="deleteAlbumForm"
-                          ng-submit="imageCtrl.submit()" novalidate>
-
-                        <div class="input-group">
-                            <label for="delete.album.userId" class="input-group-addon">User id: </label>
-                            <input id="delete.album.userId" class="form-control" ng-model="imageCtrl.userId" type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="delete.album.name" class="input-group-addon">Album: </label>
-                            <input id="delete.album.name" class="form-control" ng-model="imageCtrl.album" type="text"
-                                   required>
-                        </div>
-
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#photoServerDemoGroup" href="#getAlbumImages">
-                        Get Album Images
-                    </a>
-                </h4>
-            </div>
-            <div id="getAlbumImages" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="form-horizontal" name="getAlbumImagesForm"
-                          ng-submit="imageCtrl.submit()" novalidate>
-
-                        <div class="input-group">
-                            <label for="get.album.images.userId" class="input-group-addon">User id: </label>
-                            <input id="get.album.images.userId" class="form-control" ng-model="imageCtrl.userId"
-                                   type="text"
-                                   required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="get.album.images.name" class="input-group-addon">Album: </label>
-                            <input id="get.album.images.name" class="form-control" ng-model="imageCtrl.album"
-                                   type="text"
-                                   required>
-                        </div>
-
-                        <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="preview" class="col-sm-6" ng-controller="PreviewController as previewCtrl">
-        <div>
-            <button class="btn btn-info" ng-click="previewCtrl.download()">
-                <span class="glyphicon glyphicon-search"></span> Search
-            </button>
-            <img ng-src="{{thumbnail}}"
-                 ng-repeat="thumbnail in previewCtrl.getThumbnails()">
-        </div>
-    </div>
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div id="preview" class="folder">
+        <div ui-view="content"></div>
+    <div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/angular-bootstrap.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
 <script type="text/javascript" src="js/services.js"></script>
 <script type="text/javascript" src="js/selectFile.js"></script>
 </body>

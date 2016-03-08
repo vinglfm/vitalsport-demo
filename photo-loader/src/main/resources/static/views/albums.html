@@ -1,0 +1,9 @@
+<div ng-controller="AlbumController as albumCtrl">
+    <button class="btn btn-info" ng-click="albumCtrl.download()">
+        <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+    <figure id="album" ng-repeat="userAlbum in albumCtrl.getUserAlbums()">
+        <img src="../img/album.png" alt="album">
+        <figcaption>{{userAlbum.name}}</figcaption>
+    </figure>
+</div>
