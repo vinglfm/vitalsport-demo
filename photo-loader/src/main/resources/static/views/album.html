@@ -1,0 +1,8 @@
+<div ng-controller="ImageController as imageCtrl">
+    <a class="btn corner" ng-click="albumCtrl.download()">
+        <span class="glyphicon glyphicon-repeat"></span>
+    </a>
+    <div id="image" ng-repeat="thumbnail in imageCtrl.getThumbnails()">
+        <img ng-src="{{thumbnail}}" alt="image">
+    </div>
+</div>

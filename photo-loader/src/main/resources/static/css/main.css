@@ -25,6 +25,10 @@
     box-sizing: border-box;
 }
 
+.corner {
+    float:right;
+}
+
 #login {
     width: 50%;
     margin: 0 auto;
@@ -35,8 +39,8 @@ html, body {
 }
 
 img {
-    height: 150px;
-    width: 150px;
+    height: 10%;
+    width: 10%;
 }
 
 input[readonly] {

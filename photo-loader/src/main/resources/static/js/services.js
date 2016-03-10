@@ -2,27 +2,26 @@
 
 angular.module("demo")
     .constant("baseUrl", "http://localhost:8081/vitalsport/photos/")
-    .service("loginService", function(){
+    .service("sharingService", function(){
         this.userId = "";
+        this.album = "";
     })
     .service("albumService", ["$http", "baseUrl", function($http, baseUrl) {
-        this.download = function(userId) {
-            return $http.get(baseUrl + userId + "/albums");
+        this.download = function(userId, onSuccess, onError) {
+            $http.get(baseUrl + userId + "/albums").success(onSuccess).error(onError);
         };
     }])
     .service("imageService", ["$http", "baseUrl", function($http, baseUrl) {
-        this.download = function(infos, callback, error) {
-
-            infos.forEach(function(info){
-//               console.log(info.userId + " " + info.album + " " + info.image);
-               callback("http://localhost:8081/vitalsport/photos/"+ info.userId +
-                "/image?album=" + info.album +"&image="+ info.image);
-//               $http.get(baseUrl + info.userId + "/image",
-//                {params:{"album": info.album, "image": info.image}})
-//                .success(callback)
-//                .error(error);
-            });
-        }
+        this.download = function(userId, album, onSuccess, onError) {
+           $http.get(baseUrl + userId + "/" + album)
+            .success(function(response){
+                onSuccess(response.map(
+                    function(elem) {
+                        return baseUrl + userId + "/image?album=" + album +"&image=" + elem;
+                    }));
+            })
+            .error(onError);
+        };
     }])
     .service("infoSharingService", function() {
         this.infos = [];
