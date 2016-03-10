@@ -1,11 +1,11 @@
 <div class="row" ng-controller="ImageController as imageCtrl">
     <div class="col-sm-offset-11 col-sm-1">
-        <a class="btn" ng-click="albumCtrl.download()">
+        <a class="btn" ng-click="imageCtrl.download()">
             <span class="glyphicon glyphicon-repeat"></span>
         </a>
     </div>
     <div id="image" class="col-sm-3" ng-repeat="thumbnail in imageCtrl.getThumbnails()">
-        <a href="#" class="thumbnail">
+        <a href="{{thumbnail}}" class="thumbnail">
             <img ng-src="{{thumbnail}}" alt="image">
         </a>
     </div>
