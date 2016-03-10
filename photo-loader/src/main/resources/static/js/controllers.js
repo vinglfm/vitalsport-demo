@@ -12,7 +12,6 @@ angular.module("demo")
         var albums = [];
 
         this.download = function() {
-            console.log("ohh");
             albumService.download(sharingService.userId, function(response){
                 $timeout(function(){
                     albums = response;
@@ -34,7 +33,7 @@ angular.module("demo")
         this.download();
     }])
     .controller("ImageController", ["$timeout", "imageService", "sharingService",
-     function($scope, imageService, sharingService) {
+     function($timeout, imageService, sharingService) {
         var thumbnails = [];
 
         this.download = function() {

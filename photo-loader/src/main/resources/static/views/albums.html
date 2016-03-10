@@ -1,9 +1,13 @@
-<div ng-controller="AlbumController as albumCtrl">
-    <a class="btn corner" ng-click="albumCtrl.download()">
-        <span class="glyphicon glyphicon-repeat"></span>
-    </a>
-    <figure id="album" ng-repeat="userAlbum in albumCtrl.getAlbums()">
-        <a ui-sref="app.album" ng-click="albumCtrl.save(userAlbum)"><img src="img/album.png" alt="album"></a>
+<div class="row" ng-controller="AlbumController as albumCtrl">
+    <div class="col-sm-offset-11 col-sm-1">
+        <a class="btn" ng-click="albumCtrl.download()">
+            <span class="glyphicon glyphicon-repeat"></span>
+        </a>
+    </div>
+    <figure id="album" class="col-sm-3" ng-repeat="userAlbum in albumCtrl.getAlbums()">
+        <a ui-sref="app.album" class="thumbnail temp" ng-click="albumCtrl.save(userAlbum)">
+            <img src="img/album.png" alt="album">
+        </a>
         <figcaption>{{userAlbum}}</figcaption>
     </figure>
 </div>

@@ -1,8 +1,12 @@
-<div ng-controller="ImageController as imageCtrl">
-    <a class="btn corner" ng-click="albumCtrl.download()">
-        <span class="glyphicon glyphicon-repeat"></span>
-    </a>
-    <div id="image" ng-repeat="thumbnail in imageCtrl.getThumbnails()">
-        <img ng-src="{{thumbnail}}" alt="image">
+<div class="row" ng-controller="ImageController as imageCtrl">
+    <div class="col-sm-offset-11 col-sm-1">
+        <a class="btn" ng-click="albumCtrl.download()">
+            <span class="glyphicon glyphicon-repeat"></span>
+        </a>
+    </div>
+    <div id="image" class="col-sm-3" ng-repeat="thumbnail in imageCtrl.getThumbnails()">
+        <a href="#" class="thumbnail">
+            <img ng-src="{{thumbnail}}" alt="image">
+        </a>
     </div>
 </div>
