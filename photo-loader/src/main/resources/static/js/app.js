@@ -32,4 +32,12 @@ angular.module("demo", ["ui.router"])
             })
 
         $urlRouterProvider.otherwise("/");
-    });
+    })
+     .run( function(sharingService, $rootScope, $location) {
+        $rootScope.$on( "$stateChangeStart",
+        function(event, toState, toParams, fromState, fromParams, options) {
+            if(sharingService.userId === "" && toState.name !== "app") {
+                $location.path("/");
+            }
+        });
+     })
