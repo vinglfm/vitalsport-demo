@@ -21,6 +21,18 @@ angular.module("demo")
             });
         }
 
+        this.remove = function(userAlbum) {
+            albumService.remove(sharingService.userId, userAlbum,
+            function(response) {
+                console.log(response);
+                $timeout(function(){
+                    albums = albums.filter(function(album) {
+                        return album !== userAlbum;
+                    });
+                });
+            });
+        }
+
         this.getAlbums = function() {
             return albums;
         }
@@ -47,6 +59,17 @@ angular.module("demo")
                 console.log(response);
             });
         };
+
+        this.remove = function(image) {
+            imageService.remove(sharingService.userId, sharingService.album, image,
+                function(response) {
+                    $timeout(function() {
+                      thumbnails = thumbnails.filter(function(thumbnail) {
+                        return thumbnail.name !== image;
+                      });
+                    });
+                });
+        }
 
         this.getThumbnails = function() {
             return thumbnails;

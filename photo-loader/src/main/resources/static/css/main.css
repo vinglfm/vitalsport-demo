@@ -11,6 +11,14 @@
     margin-bottom: 5%;
 }
 
+.corner {
+    float: right;
+    display: block;
+    position: absolute;
+    right:-5px;
+    top:-15px;
+}
+
 .folder {
     border-radius: 2%;
     width: 80%;
