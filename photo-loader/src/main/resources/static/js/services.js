@@ -8,7 +8,9 @@ angular.module("demo")
     })
     .service("albumService", ["$http", "baseUrl", function($http, baseUrl) {
         this.download = function(userId, onSuccess, onError) {
-            $http.get(baseUrl + userId + "/albums").success(onSuccess).error(onError);
+            var path = baseUrl + userId + "/albums";
+            console.log(path);
+            $http.get(path).success(onSuccess).error(onError);
         };
 
         this.remove = function(userId, album, onSuccess, onError) {
@@ -38,6 +40,28 @@ angular.module("demo")
                         {params: imageParams})
                         .then(onSuccess, onError);
         }
+    }])
+    .service("addAlbumService", ["$http", "baseUrl", function($http, baseUrl) {
+        this.upload = function(userId, album, onSuccess, onError) {
+            $http.post(baseUrl + userId + "/album?album=" + album)
+            .success(onSuccess)
+            .error(onError);
+        };
+    }])
+    .service("addImageService", ["$http", "baseUrl", function($http, baseUrl) {
+        this.upload = function(userId, album, file, onSuccess, onError) {
+
+            var formData = new FormData();
+            formData.append('file', file);
+
+            $http.post(baseUrl + userId + "/upload?album=" + album,
+             formData, {
+                transformRequest:angular.identity,
+                headers:{'Content-Type':undefined}
+            })
+            .success(onSuccess)
+            .error(onError);
+        };
     }])
     .service("infoSharingService", function() {
         this.infos = [];

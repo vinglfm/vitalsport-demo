@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("demo", ["ui.router"])
+angular.module("demo", ['ui.router', 'ui.bootstrap'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state("app", {
@@ -30,7 +30,32 @@ angular.module("demo", ["ui.router"])
                     }
                 }
             })
-
+            .state("app.albums.addAlbum", {
+                 url: "/addAlbum",
+                 onEnter: ['$timeout', '$state', '$uibModal',
+                 function($timeout, $state, $uibModal) {
+                     $uibModal.open({
+                         templateUrl: "views/addAlbum.html",
+                         size: "lg",
+                         controller: "AddAlbumController"
+                     }).result.finally(function() {
+                        $state.go("app.albums");
+                     });
+                 }]
+             })
+             .state("app.album.addImage", {
+                              url: "/addImage",
+                              onEnter: ['$timeout', '$state', '$uibModal',
+                              function($timeout, $state, $uibModal) {
+                                  $uibModal.open({
+                                      templateUrl: "views/addImage.html",
+                                      size: "lg",
+                                      controller: "AddImageController"
+                                  }).result.finally(function() {
+                                     $state.go("app.album");
+                                  });
+                              }]
+                          });
         $urlRouterProvider.otherwise("/");
     })
      .run( function(sharingService, $rootScope, $location) {

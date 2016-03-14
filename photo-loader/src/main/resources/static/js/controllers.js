@@ -7,8 +7,10 @@ angular.module("demo")
             sharingService.userId = this.userId;
         };
     }])
-    .controller("AlbumController", ["$timeout", "sharingService", "albumService",
-    function($timeout, sharingService, albumService) {
+    .controller("AlbumController", ["$scope", "$state",
+    "$timeout", "sharingService", "albumService",
+    function($scope, $state, $timeout, sharingService, albumService) {
+        $scope.$state = $state;
         var albums = [];
 
         this.download = function() {
@@ -77,38 +79,41 @@ angular.module("demo")
 
         this.download();
     }])
-//    .controller("UploadController", ["$http", "$scope", "$element", "infoSharingService",
-//            function($http, $scope, $element, infoSharingService){
-//
-//            var imageController = this;
-//            this.userId = "";
-//            this.album = "";
-//
-//            var onSuccess = function(data) {
-//                console.log(data);
-//                infoSharingService.append(imageController.userId, imageController.album, $scope.files.name);
-//                infoSharingService.infos.forEach(function(info) {
-//                    console.log(info);
-//                });
-//
-//                imageController.userId = "";
-//                imageController.album = "";
-//                $scope.files = null;
-//                $('#upload\\.fileName', $element).val('');
-//            };
-//
-//            this.upload = function() {
-//                var formData = new FormData();
-//                formData.append('file', $scope.files);
-//
-//                $http.post("http://localhost:8081/vitalsport/photos/"+ this.userId + "/upload?album=" + this.album,
-//                 formData, {
-//                    transformRequest:angular.identity,
-//                    headers:{'Content-Type':undefined}
-//                }).success(onSuccess);
-//            };
-//        }])
-        .directive('fileInput', ['$parse', function($parse) {
+    .controller("AddAlbumController", ["addAlbumService", "sharingService",
+        function(addAlbumService, sharingService){
+
+        var imageController = this;
+        this.userId = sharingService.userId;
+        this.album = "";
+
+        this.upload = function() {
+            addAlbumService.upload(this.userId, this.album,
+            function(response) {
+                imageController.album = "";
+            }, function(response) {
+                console.log(response);
+            });
+        };
+    }])
+    .controller("AddImageController", ["$scope", "addImageService", "sharingService",
+            function($scope, addImageService, sharingService){
+
+            var imageController = this;
+            this.userId = sharingService.userId;
+            this.album = sharingService.album;
+
+            this.upload = function() {
+                addImageService.upload(this.userId, this.album, $scope.files,
+                function(response) {
+                    imageController.userId = "";
+                    imageController.album = "";
+                    $scope.files = null;
+                }, function(response) {
+                    console.log(response);
+                });
+            };
+        }])
+    .directive('fileInput', ['$parse', function($parse) {
         return {
             restrict: 'A',
             link: function(scope, elm, attrs) {
@@ -119,4 +124,4 @@ angular.module("demo")
                 });
             }
         }
-    }]);
+}]);

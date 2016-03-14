@@ -1,0 +1,32 @@
+<div id="api" class="panel-group"
+     ng-controller="AddImageController as addImageCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Upload Image:
+            </h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="uploadForm"
+                  ng-submit="addImageCtrl.upload()" novalidate>
+
+                <div class="input-group">
+                    <label for="upload.userId" class="input-group-addon">User id: </label>
+                    <input id="upload.userId" class="form-control" ng-model="addImageCtrl.userId" type="text"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label for="upload.album" class="input-group-addon">Album: </label>
+                    <input id="upload.album" class="form-control" ng-model="addImageCtrl.album" type="text"
+                           required>
+                </div>
+
+                <input id="upload.imageSelector" file-input="files" accept="image/*"
+                       type="file" required>
+
+                <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

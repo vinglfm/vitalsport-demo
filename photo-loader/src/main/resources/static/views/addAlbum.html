@@ -1,0 +1,23 @@
+<div id="api" class="panel-group"
+     ng-controller="AddAlbumController as addAlbumCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Upload Album:
+            </h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="uploadForm"
+                  ng-submit="addAlbumCtrl.upload()" novalidate>
+
+                <div class="input-group">
+                    <label for="upload.album" class="input-group-addon">Album: </label>
+                    <input id="upload.album" class="form-control" ng-model="addAlbumCtrl.album" type="text"
+                           required>
+                </div>
+
+                <button class="btn btn-primary col-sm-offset-5 col-sm-2" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

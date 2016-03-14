@@ -5,13 +5,19 @@
         </a>
     </div>
     <div class="col-sm-3 img-responsive" ng-repeat="userAlbum in albumCtrl.getAlbums()">
-        <a class="btn corner" ng-click="albumCtrl.remove(userAlbum)"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="btn corner" ng-click="albumCtrl.remove(userAlbum)"><span
+                class="glyphicon glyphicon-remove"></span></a>
         <figure id="album">
-            <a ui-sref="app.album" class="thumbnail temp" ng-click="albumCtrl.save(userAlbum)">
+            <a ui-sref="app.album" class="thumbnail" ng-click="albumCtrl.save(userAlbum)">
                 <img src="img/album.png" alt="album">
             </a>
             <figcaption>{{userAlbum}}</figcaption>
         </figure>
     </div>
 
+    <div class="col-sm-3 img-responsive">
+        <a ui-sref="app.albums.addAlbum" class="btn btn-default thumbnail">
+            <img src="img/add.png" alt="add">
+        </a>
+    </div>
 </div>
