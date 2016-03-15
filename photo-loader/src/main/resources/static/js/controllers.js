@@ -1,16 +1,14 @@
 
-angular.module("demo")
-    .controller("LoginController", ["sharingService", function(sharingService) {
+angular.module('demo')
+    .controller('LoginController', ['sharingService', function(sharingService) {
         this.userId = "";
         this.save = function() {
             console.log(this.userId);
             sharingService.userId = this.userId;
         };
     }])
-    .controller("AlbumController", ["$scope", "$state",
-    "$timeout", "sharingService", "albumService",
-    function($scope, $state, $timeout, sharingService, albumService) {
-        $scope.$state = $state;
+    .controller('AlbumController', ['$timeout', 'sharingService', 'albumService',
+    function($timeout, sharingService, albumService) {
         var albums = [];
 
         this.download = function() {
@@ -46,7 +44,7 @@ angular.module("demo")
 
         this.download();
     }])
-    .controller("ImageController", ["$timeout", "imageService", "sharingService",
+    .controller('ImageController', ['$timeout', 'imageService', 'sharingService',
      function($timeout, imageService, sharingService) {
         var thumbnails = [];
 
@@ -79,7 +77,7 @@ angular.module("demo")
 
         this.download();
     }])
-    .controller("AddAlbumController", ["addAlbumService", "sharingService",
+    .controller('AddAlbumController', ['addAlbumService', 'sharingService',
         function(addAlbumService, sharingService){
 
         var imageController = this;
@@ -95,7 +93,7 @@ angular.module("demo")
             });
         };
     }])
-    .controller("AddImageController", ["$scope", "addImageService", "sharingService",
+    .controller('AddImageController', ['$scope', 'addImageService', 'sharingService',
             function($scope, addImageService, sharingService){
 
             var imageController = this;
@@ -105,8 +103,6 @@ angular.module("demo")
             this.upload = function() {
                 addImageService.upload(this.userId, this.album, $scope.files,
                 function(response) {
-                    imageController.userId = "";
-                    imageController.album = "";
                     $scope.files = null;
                 }, function(response) {
                     console.log(response);
