@@ -58,7 +58,8 @@ angular.module('demo', ['ui.router', 'ui.bootstrap'])
                           });
         $urlRouterProvider.otherwise('/');
     })
-     .run( function(sharingService, $uibModalStack, $rootScope, $location) {
+     .run( [ 'sharingService', '$uibModalStack', '$rootScope', '$location',
+     function(sharingService, $uibModalStack, $rootScope, $location) {
         $rootScope.$on('$stateChangeStart',
         function(event, toState, toParams, fromState, fromParams, options) {
             if(sharingService.userId === "" && toState.name !== 'app') {
@@ -71,4 +72,4 @@ angular.module('demo', ['ui.router', 'ui.bootstrap'])
                 event.preventDefault();
             }
         });
-     });
+     }]);

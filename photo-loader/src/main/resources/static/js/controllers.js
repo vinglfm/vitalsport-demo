@@ -1,3 +1,4 @@
+'use strict';
 
 angular.module('demo')
     .controller('LoginController', ['sharingService', function(sharingService) {
@@ -24,7 +25,6 @@ angular.module('demo')
         this.remove = function(userAlbum) {
             albumService.remove(sharingService.userId, userAlbum,
             function(response) {
-                console.log(response);
                 $timeout(function(){
                     albums = albums.filter(function(album) {
                         return album !== userAlbum;
@@ -52,7 +52,6 @@ angular.module('demo')
             imageService.download(sharingService.userId, sharingService.album,
              function(response) {
                 $timeout(function(){
-                    console.log(response);
                     thumbnails = response;
                 });
             }, function(response) {
