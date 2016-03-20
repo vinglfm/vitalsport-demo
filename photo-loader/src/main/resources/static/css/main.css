@@ -35,6 +35,19 @@
 
 .thumbnail {
     margin-bottom: 1px;
+    display: -webkit-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.sized {
+    weight: 200px;
+    height: 200px;
 }
 
 figure figcaption {

@@ -8,7 +8,7 @@
         <a class="btn corner" ng-click="albumCtrl.remove(userAlbum)"><span
                 class="glyphicon glyphicon-remove"></span></a>
         <figure id="album">
-            <a ui-sref="app.album" class="thumbnail" ng-click="albumCtrl.save(userAlbum)">
+            <a ui-sref="app.album" class="thumbnail sized" ng-click="albumCtrl.save(userAlbum)">
                 <img src="img/album.png" alt="album">
             </a>
             <figcaption>{{userAlbum}}</figcaption>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-sm-3 img-responsive">
-        <a ui-sref="app.albums.addAlbum" class="btn btn-default thumbnail">
+        <a ui-sref="app.albums.addAlbum" class="btn btn-default thumbnail sized">
             <img src="img/add.png" alt="add">
         </a>
     </div>

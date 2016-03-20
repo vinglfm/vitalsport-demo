@@ -8,13 +8,13 @@
         <a class="btn corner" ng-click="imageCtrl.remove(thumbnail.name)">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
-        <a href="{{thumbnail.url}}" class="thumbnail">
+        <a href="{{thumbnail.url}}" class="thumbnail sized">
             <img ng-src="{{thumbnail.url}}" alt="image">
         </a>
     </div>
 
     <div class="col-sm-3 img-responsive">
-        <a ui-sref="app.album.addImage" class="btn btn-default thumbnail">
+        <a ui-sref="app.album.addImage" class="btn btn-default thumbnail sized">
             <img src="img/add.png" alt="add">
         </a>
     </div>
