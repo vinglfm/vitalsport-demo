@@ -35,12 +35,10 @@
 
 .thumbnail {
     margin-bottom: 1px;
-    display: -webkit-flexbox;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-align: center;
-    -ms-flex-align: center;
+    -ms-flex-align-items: center;
     -webkit-align-items: center;
     align-items: center;
 }
